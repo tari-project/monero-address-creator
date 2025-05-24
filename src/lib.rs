@@ -20,7 +20,7 @@
 //  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 //  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-mod error;
+pub mod error;
 mod mnemonics;
 pub mod network;
 
@@ -70,6 +70,7 @@ impl Seed {
     }
 
     pub fn generate() -> Result<Seed, Error> {
+        // Step 1: Generate entropy
         let entropy = generate_entropy(); // Generate 32 random bytes
         let mut words = Vec::with_capacity(25);
         let length = ENGLISH.len();
